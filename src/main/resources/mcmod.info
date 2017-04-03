@@ -1,0 +1,16 @@
+[
+{
+  "modid": "sleeptron",
+  "name": "Sleep Tron 2000",
+  "description": "Automatic Sleeping Machine",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/Vanhal/SleepTron/",
+  "updateUrl": "https://github.com/Vanhal/SleepTron/releases",
+  "authorList": ["Vanhal"],
+  "credits": "Vanhal",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

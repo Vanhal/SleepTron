@@ -1,0 +1,10 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "sleeptron:sleeptron2000"
+    },
+    "variants": {
+        "normal": [{}],
+        "inventory": [{}]
+    }
+}
