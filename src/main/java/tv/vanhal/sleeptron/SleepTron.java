@@ -8,6 +8,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 
 import tv.vanhal.sleeptron.core.Proxy;
 import tv.vanhal.sleeptron.util.Ref;
+import tv.vanhal.sleeptron.world.SleptEvent;
+import tv.vanhal.sleeptron.world.WorldTicker;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
@@ -59,20 +62,44 @@ public class SleepTron {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		STConfig.init(new Configuration(event.getSuggestedConfigurationFile()));
 		
 		//initialise the block
 		sleepTronBlock = new SleepTronBlock();
 		GameRegistry.register(sleepTronBlock);
 		GameRegistry.register(new ItemBlock(sleepTronBlock).setRegistryName(sleepTronBlock.getRegistryName()));
+		
+		if (STConfig.CRAFTABLE) {
+			ShapedOreRecipe recipe = new ShapedOreRecipe(new ItemStack(sleepTronBlock), new Object[]{
+					"wiw", "ibi", "wiw", 'b', Blocks.WOOL, 'i', Blocks.IRON_BARS, 'w', Blocks.END_STONE
+			});
+			GameRegistry.addRecipe(recipe);
+		}
+		
+		STConfig.save();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
+		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new WorldTicker());
+		MinecraftForge.EVENT_BUS.register(new SleptEvent());
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.registerEntities();
+		
+		if (event.getSide() == Side.CLIENT) {
+			sleepTronBlock.postInit();
+		}
+		
+		STConfig.postInit();
 	}
 
+	@SubscribeEvent
+    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent eventArgs) {
+        if(eventArgs.getModID().equals(Ref.MODID))
+        	STConfig.syncConfig();
+    }
 }

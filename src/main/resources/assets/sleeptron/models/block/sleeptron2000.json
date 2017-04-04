@@ -1,6 +1,8 @@
 {
-	"parent": "block/cube_all",
+	"parent": "block/cube_bottom_top",
 	"textures": {
-		"all": "minecraft:blocks/crafting_table_top"
+		"top": "sleeptron:blocks/sleeptrontop",
+		"bottom": "sleeptron:blocks/sleeptronbottom",
+		"side": "sleeptron:blocks/sleeptronside"
 	}
 }

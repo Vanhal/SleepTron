@@ -1,2 +1,15 @@
 itemGroup.STTab=Sleep Tron
 tile.sleeptron2000.name=Sleep Tron 2000
+
+chat.active.text=Sleep Tron 2000 Activated
+chat.online.text=Sleep Tron 2000 Online
+chat.configed.text=This Sleep Tron 2000 is currently configured for:
+chat.nightTime.text=You heard rustling during the night time...
+chat.somethingleft.text=Looks like someone left something for you!
+
+book.title.data=Sleep Tron 2000 (tm)
+book.author.data=Vanhal
+book.contents.page.1=Hey there!<br>You look like the sort of person who could do with one of these handy dandy Sleep Tron 2000.<br><br>With this device you can sleep the night away without visiting your bed!
+book.contents.page.2=WARNING<br><br>Please note that the Sleep Tron 2000 will need to be in a loaded chunk to work properly.<br><br>While playing with friends you will each need to place your own Sleep Tron 2000 or be in bed for it to work.
+book.contents.page.3=Setting it Up<br><br>Simply place the Sleep Tron 2000 above your bed and power it with the included lever and you're good to go.<br>Once it gets dark out the Sleep Tron 2000 will activate and make it seem like you are fast asleep in bed.
+book.contents.page.4=Inversion<br><br>If you are the sort of person who likes to sleep through the day instead then we have just the thing for you. Place a redstone torch on top of the Sleep Tron 2000 and it will cause you to sleep until dusk!
